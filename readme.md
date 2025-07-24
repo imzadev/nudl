@@ -3,13 +3,8 @@
 > **Project Name**: NUDL  
 > **Function**: Transform JSON files into RESTful APIs with an interactive terminal UI (TUI)  
 
-## Getting Started
-
-```bash
-git clone https://github.com/imzadev/nudl.git
-cd nudl
-go run cmd/main.go
-```
+---
+🚧 Project under active devlopment - Not ready for production
 ---
 ## 🎯 1. Features
 - ✅ Interactive TUI to load and visualize JSON API setup
