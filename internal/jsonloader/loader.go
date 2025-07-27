@@ -25,3 +25,16 @@ func Parse(content string) (map[string]any, error) {
 	return parsedJson, nil
 }
 
+func LoadAndParse(path string) (map[string]any, error) {
+	content, err := Load(path)
+	if err != nil {
+		return nil, err
+	}
+
+	parsedContent, err := Parse(content)
+	if err != nil {
+		return nil, err
+	}
+
+	return parsedContent, nil
+}
