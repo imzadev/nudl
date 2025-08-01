@@ -82,7 +82,7 @@ Example:
 
 ## 🧪 Feedback & Contributions
 
-This is the MVP release. Feedback, ideas, and issues are welcome via [GitHub Issues](https://github.com/yourname/nudl/issues).
+This is the MVP release. Feedback, ideas, and issues are welcome via [GitHub Issues](https://github.com/imzadev/nudl/issues).
 
 ---
 

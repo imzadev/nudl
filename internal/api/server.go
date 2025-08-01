@@ -6,28 +6,31 @@ import (
 )
 
 type App struct {
-	router http.Handler
+	router  http.Handler
+	content map[string]any
+	port    string
 }
 
-func New() *App {
-	app := &App{}
+func New(port string, data map[string]any) *App {
+	app := &App{
+		content: data,
+		port:    port,
+	}
 
 	app.loadRoutes()
 
 	return app
 }
 
-func (a *App) Start(){
+func (a *App) Start() {
 	server := &http.Server{
-		Addr: ":3000",
+		Addr:    ":" + a.port,
 		Handler: a.router,
 	}
-	
-	fmt.Println("Starting server")
+
 	err := server.ListenAndServe()
 	if err != nil {
 		fmt.Println("failed to listen to server", err)
 	}
-
 
 }

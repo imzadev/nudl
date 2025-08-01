@@ -6,34 +6,26 @@ import (
 	"os"
 )
 
-func Load(path string) (string, error){
-	content, err := os.ReadFile(path)
-	if err != nil {
-		return "" , fmt.Errorf("faild to read file from path : %w", err)
-	}
-
-	return string(content), nil
+type Loader struct {
+	path string
 }
 
-func Parse(content string) (map[string]any, error) {
-	var parsedJson map[string]any
-	err := json.Unmarshal([]byte(content), &parsedJson)
-	if err != nil {
-		return nil, fmt.Errorf("faild to pars json file : %w", err)
+func New(path string) *Loader{
+	return &Loader{
+		path: path,
 	}
-
-	return parsedJson, nil
 }
 
-func LoadAndParse(path string) (map[string]any, error) {
-	content, err := Load(path)
+func (l *Loader) LoadAndParse() (map[string]any, error) {
+	content, err := os.ReadFile(l.path)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to read file : %w", err)
 	}
 
-	parsedContent, err := Parse(content)
+	var parsedContent map[string]any
+	err = json.Unmarshal(content,&parsedContent)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to pars json file : %w", err)
 	}
 
 	return parsedContent, nil
